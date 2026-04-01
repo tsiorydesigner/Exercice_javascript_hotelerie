@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Hotelerie</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">Hotelintsika</a>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">A propos</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Reservation</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="hero-banner">
+        <img src="image/footer.jpg" alt="Hotel Banner" class="hero-banner-img">
+        <div class="hero-overlay">
+            <div class="hero-logo">
+                <svg class="hero-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="30" stroke="#e94560" stroke-width="3" fill="rgba(233,69,96,0.1)"/>
+                    <path d="M22 18v10c0 2.5-2 4-4 4v14h3v-14c-2 0-4-1.5-4-4V18h5z" fill="#fff"/>
+                    <path d="M42 18v10c0 2.5 2 4 4 4v14h-3v-14c2 0 4-1.5 4-4V18h-5z" fill="#fff"/>
+                    <circle cx="32" cy="46" r="6" stroke="#fff" stroke-width="2.5" fill="none"/>
+                    <path d="M32 40v-16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M28 28h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1 class="hero-title"><span class="hero-title-main">Hotelintsika</span> <span class="hero-accent">à</span> Andoharanofotsy</h1>
+            <p class="hero-subtitle">Une expérience culinaire unique au cœur de Madagascar, où chaque plat raconte l'histoire de notre terroir.</p>
+            <a href="#menu" class="btn-voir-menu">Voir le menu</a>
+        </div>
+    </div>
+
+    <section class="cards-section" id="menu">
+        <h2 class="section-title">Notre Menu</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <img src="image/Poulet frite.jpg" alt="Poulet frite" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Poulet Frite</h3>
+                    <p class="card-desc">Poulet croustillant accompagné de frites maison.</p>
+                    <p class="card-price">15 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/Frity sy Sosisy.jpg" alt="Frity sy Sosisy" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Frity sy Sosisy</h3>
+                    <p class="card-desc">Frites et saucisses grillées façon maison.</p>
+                    <p class="card-price">10 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/côtelettes de porc à la moutarde.jpg" alt="Côtelettes de porc" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Côtelettes de Porc</h3>
+                    <p class="card-desc">Côtelettes de porc marinées à la moutarde.</p>
+                    <p class="card-price">18 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/Ravitoto sy Henakisoa.jpg" alt="Ravitoto sy Henakisoa" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Ravitoto sy Henakisoa</h3>
+                    <p class="card-desc">Feuilles de manioc pilées avec du porc.</p>
+                    <p class="card-price">12 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/Henomby ritra.jpg" alt="Henomby ritra" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Henomby Ritra</h3>
+                    <p class="card-desc">Viande de zébu mijotée traditionnelle.</p>
+                    <p class="card-price">14 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/c.jpg" alt="Plat du chef" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Plat du Chef</h3>
+                    <p class="card-desc">Spécialité préparée par notre chef cuisinier.</p>
+                    <p class="card-price">20 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/✨️.jpg" alt="Dessert" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Dessert Spécial</h3>
+                    <p class="card-desc">Un dessert savoureux pour terminer en douceur.</p>
+                    <p class="card-price">8 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="image/Poulet frite.jpg" alt="Menu du jour" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Menu du Jour</h3>
+                    <p class="card-desc">Découvrez notre menu du jour avec boissons.</p>
+                    <p class="card-price">25 000 Ar</p>
+                    <button class="btn-commander">Commander</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <script src="js/main.js"></script>
+
+</body>
+</html>
