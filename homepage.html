@@ -20,6 +20,16 @@
             <li><a href="#">Reservation</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
+        <div class="cart-container">
+            <button class="cart-btn" onclick="toggleCart()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -43,6 +53,7 @@
             <h1 class="hero-title"><span class="hero-title-main">Hotelintsika</span> <span class="hero-accent">à</span> Andoharanofotsy</h1>
             <p class="hero-subtitle">Une expérience culinaire unique au cœur de Madagascar, où chaque plat raconte l'histoire de notre terroir.</p>
             <button class="btn-voir-menu" onclick="scrollToMenu()">Voir le menu</button>
+            
         </div>
     </div>
 
@@ -55,7 +66,7 @@
                     <h3 class="card-title">Poulet Frite</h3>
                     <p class="card-desc">Poulet croustillant accompagné de frites maison.</p>
                     <p class="card-price">15 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Poulet Frite', 15000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -64,7 +75,7 @@
                     <h3 class="card-title">Frity sy Sosisy</h3>
                     <p class="card-desc">Frites et saucisses grillées façon maison.</p>
                     <p class="card-price">10 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Frity sy Sosisy', 10000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -73,7 +84,7 @@
                     <h3 class="card-title">Côtelettes de Porc</h3>
                     <p class="card-desc">Côtelettes de porc marinées à la moutarde.</p>
                     <p class="card-price">18 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Côtelettes de Porc', 18000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -82,7 +93,7 @@
                     <h3 class="card-title">Ravitoto sy Henakisoa</h3>
                     <p class="card-desc">Feuilles de manioc pilées avec du porc.</p>
                     <p class="card-price">12 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Ravitoto sy Henakisoa', 12000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -91,7 +102,7 @@
                     <h3 class="card-title">Henomby Ritra</h3>
                     <p class="card-desc">Viande de zébu mijotée traditionnelle.</p>
                     <p class="card-price">14 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Henomby Ritra', 14000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -100,7 +111,7 @@
                     <h3 class="card-title">Plat du Chef</h3>
                     <p class="card-desc">Spécialité préparée par notre chef cuisinier.</p>
                     <p class="card-price">20 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Plat du Chef', 20000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -109,7 +120,7 @@
                     <h3 class="card-title">Dessert Spécial</h3>
                     <p class="card-desc">Un dessert savoureux pour terminer en douceur.</p>
                     <p class="card-price">8 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Dessert Spécial', 8000)">Commander</button>
                 </div>
             </div>
             <div class="card">
@@ -118,7 +129,7 @@
                     <h3 class="card-title">Menu du Jour</h3>
                     <p class="card-desc">Découvrez notre menu du jour avec boissons.</p>
                     <p class="card-price">25 000 Ar</p>
-                    <button class="btn-commander">Commander</button>
+                    <button class="btn-commander" onclick="addToCart('Menu du Jour', 25000)">Commander</button>
                 </div>
             </div>
         </div>
