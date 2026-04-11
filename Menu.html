@@ -60,6 +60,7 @@
                 <button class="filter-btn" onclick="filterMenu('principal', this)">Plats principaux</button>
                 <button class="filter-btn" onclick="filterMenu('traditionnel', this)">Traditionnel</button>
                 <button class="filter-btn" onclick="filterMenu('dessert', this)">Desserts</button>
+                <button class="filter-btn" onclick="filterMenu('boisson', this)">Boissons</button>
             </div>
             
             <div class="menu-grid">
@@ -150,17 +151,102 @@
                         </div>
                     </div>
                 </div>
-                <div class="menu-card" data-category="dessert">
+                <div class="menu-card crepes-roulees-chocolat" data-category="dessert">
                     <div class="menu-card-image">
-                        <img src="image/✨️.jpg" alt="Dessert Spécial" loading="lazy">
+                        <img src="image/dessert/Crêpes roulées fourrées au chocolat.jpg" alt="Crêpes roulées fourrées au chocolat" loading="lazy">
                     </div>
                     <div class="menu-card-body">
                         <div class="menu-card-category">Desserts</div>
-                        <h3 class="menu-card-title">Dessert Spécial</h3>
-                        <p class="menu-card-desc">Un dessert savoureux pour terminer en douceur.</p>
+                        <h3 class="menu-card-title">Crêpes roulées fourrées au chocolat</h3>
+                        <p class="menu-card-desc">Délicieuses crêpes garnies de chocolat fondu.</p>
                         <div class="menu-card-footer">
                             <div class="menu-card-price">8 000 <span>Ar</span></div>
-                            <button class="add-btn" onclick="addToCart('Dessert Spécial', 8000)">+</button>
+                            <button class="add-btn" onclick="addToCart('Crêpes roulées fourrées au chocolat', 8000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card brownies-chocolat" data-category="dessert">
+                    <div class="menu-card-image">
+                        <img src="image/dessert/Brownies au chocolat.jpg" alt="Brownies au chocolat" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Desserts</div>
+                        <h3 class="menu-card-title">Brownies au chocolat</h3>
+                        <p class="menu-card-desc">Gâteau brownie riche en chocolat.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">7 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Brownies au chocolat', 7000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card salade-fruits-cremeuse" data-category="dessert">
+                    <div class="menu-card-image">
+                        <img src="image/dessert/Salade de fruits crémeusee.jpg" alt="Salade de fruits crémeusee" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Desserts</div>
+                        <h3 class="menu-card-title">Salade de fruits crémeuse</h3>
+                        <p class="menu-card-desc">Frais fruits frais avec crème onctueuse.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">6 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Salade de fruits crémeuse', 6000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card smoothie-mangue" data-category="dessert">
+                    <div class="menu-card-image">
+                        <img src="image/dessert/Smoothie à la mangue.jpg" alt="Smoothie à la mangue" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Desserts</div>
+                        <h3 class="menu-card-title">Smoothie à la mangue</h3>
+                        <p class="menu-card-desc">Smoothie rafraîchissant à la mangue.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">5 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Smoothie à la mangue', 5000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card cheesecake-fraises" data-category="dessert">
+                    <div class="menu-card-image">
+                        <img src="image/dessert/Cheesecake aux fraises.jpg" alt="Cheesecake aux fraises" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Desserts</div>
+                        <h3 class="menu-card-title">Cheesecake aux fraises</h3>
+                        <p class="menu-card-desc">Cheesecake crémeux aux fraîches fraises.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">9 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Cheesecake aux fraises', 9000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section Boissons - Exclue de l'affichage "Tout" -->
+                <div class="menu-card jus-fruits-naturel" data-category="boisson">
+                    <div class="menu-card-image">
+                        <img src="image/boisson/Jus de fruits naturel.jpg" alt="Jus de Fruits Naturel" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Boissons</div>
+                        <h3 class="menu-card-title">Jus de Fruits Naturel</h3>
+                        <p class="menu-card-desc">Sélection de fruits frais de saison pressés à la demande.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">8 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Jus de Fruits Naturel', 8000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card coca-cola" data-category="boisson">
+                    <div class="menu-card-image">
+                        <img src="image/boisson/Coca-cola.jpg" alt="Coca-Cola" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Boissons</div>
+                        <h3 class="menu-card-title">Coca-Cola</h3>
+                        <p class="menu-card-desc">Rafraîchissement pétillant servi bien frais (33cl).</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">5 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Coca-Cola', 5000)">+</button>
                         </div>
                     </div>
                 </div>
@@ -239,7 +325,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Hotelintsika. Tous droits réservés.</p>
+                <p>&copy; 2026 Hotelintsika. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -263,7 +349,8 @@
             btn.classList.add('active');
             
             cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
+                // Si "Tout" est sélectionné, on affiche tout sauf les boissons
+                if ((category === 'all' && card.dataset.category !== 'boisson') || card.dataset.category === category) {
                     card.style.display = 'block';
                     card.style.animation = 'fadeInUp 0.5s ease';
                 } else {

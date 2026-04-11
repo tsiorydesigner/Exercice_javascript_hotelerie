@@ -446,4 +446,42 @@ function showNotification(name) {
     }, 2000);
 }
 
+// Données des desserts - Les IDs correspondent aux noms des fichiers dans /image/dessert/
+const dessertItems = [
+    { name: 'Fondant au Chocolat', price: 15000, id: 'fondant-chocolat' },
+    { name: 'Mousse au Chocolat noir', price: 12000, id: 'mousse-chocolat' },
+    { name: 'Crème Brûlée Vanille', price: 14000, id: 'creme-brulee' },
+    { name: 'Tarte au Citron Meringuée', price: 13000, id: 'tarte-citron' },
+    { name: 'Salade de Fruits frais', price: 10000, id: 'salade-fruits' }
+];
+
+// Données des boissons - Les IDs correspondent aux noms des fichiers dans /image/boisson/
+const boissonItems = [
+    { name: 'Jus de Fruits Naturel', price: 8000, id: 'jus-fruits-naturel' },
+    { name: 'Coca-Cola', price: 5000, id: 'coca-cola' }
+];
+
+/**
+ * Initialise la section des desserts dans la page menu.
+ * Utilise l'ID (nom du fichier image) comme classe CSS pour chaque carte.
+ */
+function loadDessertMenu() {
+    const dessertGrid = document.getElementById('dessert-grid');
+    if (!dessertGrid) return;
+
+    dessertGrid.innerHTML = dessertItems.map(item => `
+        <div class="menu-card dessert ${item.id}">
+            <img src="image/dessert/${item.id}.jpg" alt="${item.name}" class="menu-img">
+            <div class="menu-card-content">
+                <h3>${item.name}</h3>
+                <p class="price">${item.price.toLocaleString()} Ar</p>
+                <button class="btn-order" onclick="addToCart('${item.name}', ${item.price})">
+                    Commander
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
 updateCartCount();
+loadDessertMenu();
