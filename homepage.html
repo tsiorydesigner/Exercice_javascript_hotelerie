@@ -3,139 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Hotelerie</title>
+    <meta name="description" content="Hotelintsika - Restaurant et hébergement à Andoharanofotsy, Madagascar. Découvrez notre cuisine traditionnelle et nos chambres confortables.">
+    <title>Hotelintsika - Restaurant & Hébergement à Andoharanofotsy</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-       
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>">
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#" class="navbar-brand">Hotelintsika</a>
+    <nav class="navbar" id="navbar">
+        <a href="homepage.html" class="navbar-brand">
+            <div class="navbar-logo">H</div>
+            Hotelintsika<span>.</span>
+        </a>
         <ul class="navbar-links" id="navLinks">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">A propos</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">Reservation</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="homepage.html" class="active">Accueil</a></li>
+            <li><a href="A-propos.html">À propos</a></li>
+            <li><a href="Menu.html">Menu</a></li>
+            <li><a href="reservation.html">Réservation</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-        <div class="cart-container">
+        <div class="navbar-actions">
             <button class="cart-btn" onclick="toggleCart()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="9" cy="21" r="1"></circle>
                     <circle cx="20" cy="21" r="1"></circle>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
                 <span class="cart-count" id="cartCount">0</span>
             </button>
-        </div>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <div class="hero-banner">
-        <img src="image/footer.jpg" alt="Hotel Banner" class="hero-banner-img">
-        <div class="hero-overlay">
-            <div class="hero-logo">
-                <svg class="hero-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="30" stroke="#e94560" stroke-width="3" fill="rgba(233,69,96,0.1)"/>
-                    <path d="M22 18v10c0 2.5-2 4-4 4v14h3v-14c-2 0-4-1.5-4-4V18h5z" fill="#fff"/>
-                    <path d="M42 18v10c0 2.5 2 4 4 4v14h-3v-14c2 0 4-1.5 4-4V18h-5z" fill="#fff"/>
-                    <circle cx="32" cy="46" r="6" stroke="#fff" stroke-width="2.5" fill="none"/>
-                    <path d="M32 40v-16" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-                    <path d="M28 28h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <h1 class="hero-title"><span class="hero-title-main">Hotelintsika</span> <span class="hero-accent">à</span> Andoharanofotsy</h1>
-            <p class="hero-subtitle">Une expérience culinaire unique au cœur de Madagascar, où chaque plat raconte l'histoire de notre terroir.</p>
-            <button class="btn-voir-menu" onclick="scrollToMenu()">Voir le menu</button>
+    <section class="hero">
+        <div class="hero-content">
             
+            <h1 class="hero-title">L'excellence culinaire à <span>Andoharanofotsy</span></h1>
+            <p class="hero-subtitle">Découvrez une expérience gastronomique unique au cœur de Madagascar. Nos plats traditionnels préparés avec des ingrédients locaux frais.</p>
+            <div class="hero-buttons">
+                <a href="Menu.html" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+                        <path d="M7 2v20"></path>
+                        <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                    </svg>
+                    Voir le menu
+                </a>
+                <a href="reservation.html" class="btn btn-secondary">
+                    Réserver une table
+                </a>
+            </div>
         </div>
-    </div>
+        <div class="hero-image">
+            <img src="image/footer.jpg" alt="Hotelintsika Restaurant">
+        </div>
+        
+    </section>
 
-    <section class="cards-section" id="menu">
-        <h2 class="section-title">Notre Menu</h2>
-        <div class="cards-grid">
-            <div class="card">
-                <img src="image/Poulet frite.jpg" alt="Poulet frite" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Poulet Frite</h3>
-                    <p class="card-desc">Poulet croustillant accompagné de frites maison.</p>
-                    <p class="card-price">15 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Poulet Frite', 15000)">Commander</button>
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+                            <path d="M7 2v20"></path>
+                            <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                        </svg>
+                    </div>
+                    <h3>Cuisine Locale</h3>
+                    <p>Des plats traditionnels malgaches préparés avec des ingrédients frais et locaux.</p>
                 </div>
-            </div>
-            <div class="card">
-                <img src="image/Frity sy Sosisy.jpg" alt="Frity sy Sosisy" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Frity sy Sosisy</h3>
-                    <p class="card-desc">Frites et saucisses grillées façon maison.</p>
-                    <p class="card-price">10 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Frity sy Sosisy', 10000)">Commander</button>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Hébergement</h3>
+                    <p>Des chambres confortables et modernes pour un séjour inoubliable.</p>
                 </div>
-            </div>
-            <div class="card">
-                <img src="image/côtelettes de porc à la moutarde.jpg" alt="Côtelettes de porc" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Côtelettes de Porc</h3>
-                    <p class="card-desc">Côtelettes de porc marinées à la moutarde.</p>
-                    <p class="card-price">18 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Côtelettes de Porc', 18000)">Commander</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/Ravitoto sy Henakisoa.jpg" alt="Ravitoto sy Henakisoa" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Ravitoto sy Henakisoa</h3>
-                    <p class="card-desc">Feuilles de manioc pilées avec du porc.</p>
-                    <p class="card-price">12 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Ravitoto sy Henakisoa', 12000)">Commander</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/Henomby ritra.jpg" alt="Henomby ritra" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Henomby Ritra</h3>
-                    <p class="card-desc">Viande de zébu mijotée traditionnelle.</p>
-                    <p class="card-price">14 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Henomby Ritra', 14000)">Commander</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/c.jpg" alt="Plat du chef" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Plat du Chef</h3>
-                    <p class="card-desc">Spécialité préparée par notre chef cuisinier.</p>
-                    <p class="card-price">20 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Plat du Chef', 20000)">Commander</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/✨️.jpg" alt="Dessert" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Dessert Spécial</h3>
-                    <p class="card-desc">Un dessert savoureux pour terminer en douceur.</p>
-                    <p class="card-price">8 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Dessert Spécial', 8000)">Commander</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image/Poulet frite.jpg" alt="Menu du jour" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">Menu du Jour</h3>
-                    <p class="card-desc">Découvrez notre menu du jour avec boissons.</p>
-                    <p class="card-price">25 000 Ar</p>
-                    <button class="btn-commander" onclick="addToCart('Menu du Jour', 25000)">Commander</button>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Service 24/7</h3>
+                    <p>Une équipe disponible à tout moment pour répondre à vos besoins.</p>
                 </div>
             </div>
         </div>
     </section>
 
- <script src="js/main.js"></script>
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Notre carte</span>
+                <h2 class="section-title">Plats populaires</h2>
+                <p class="section-subtitle">Découvrez nos spécialités incontournabes, préparées avec passion par notre chef.</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="image/Poulet frite.jpg" alt="Poulet Frite" loading="lazy">
+                        <span class="menu-card-badge">Best-seller</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Plats principaux</div>
+                        <h3 class="menu-card-title">Poulet Frite</h3>
+                        <p class="menu-card-desc">Poulet croustillant accompagné de frites maison.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">15 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Poulet Frite', 15000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="image/Ravitoto sy Henakisoa.jpg" alt="Ravitoto sy Henakisoa" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Traditionnel</div>
+                        <h3 class="menu-card-title">Ravitoto</h3>
+                        <p class="menu-card-desc">Feuilles de manioc pilées avec du porc.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">12 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Ravitoto sy Henakisoa', 12000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="image/côtelettes de porc à la moutarde.jpg" alt="Côtelettes de porc" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Plats principaux</div>
+                        <h3 class="menu-card-title">Côtelettes de Porc</h3>
+                        <p class="menu-card-desc">Côtelettes marinées à la moutarde maison.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">18 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Côtelettes de Porc', 18000)">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">
+                        <img src="image/Henomby ritra.jpg" alt="Henomby Ritra" loading="lazy">
+                        <span class="menu-card-badge">Spécialité</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-category">Traditionnel</div>
+                        <h3 class="menu-card-title">Henomby Ritra</h3>
+                        <p class="menu-card-desc">Viande de zébu mijotée traditionnelle.</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-price">14 000 <span>Ar</span></div>
+                            <button class="add-btn" onclick="addToCart('Henomby Ritra', 14000)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="Menu.html" class="btn btn-primary">Voir tout le menu</a>
+            </div>
+        </div>
+    </section>
 
+    <section class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <img src="image/footer.jpg" alt="Hotelintsika" class="about-main-image">
+                    <img src="image/c.jpg" alt="Plat du chef" class="about-secondary-image">
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">À propos de nous</span>
+                    <h2>Une passion pour la cuisine malgache</h2>
+                    <p>Depuis plus de 8 ans, Hotelintsika fait rimmer hospitalité et gastronomie à Andoharanofotsy. Nous célébrons les saveurs authentiques de Madagascar à travers des plats préparés avec des ingrédients locaux.</p>
+                    <p>Notre équipe passionnée vous accueille dans un cadre chaleureux pour une expérience culinaire inoubliable.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Ingredients locaux</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Chef experimenté</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Cadre convivial</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Service rapide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à vivre l'expérience Hotelintsika ?</h2>
+                <p>Réservez votre table dès maintenant et découvrirz les saveurs authentique de Madagascar.</p>
+                <a href="reservation.html" class="btn btn-primary">Réserver maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-brand">Hotelintsika<span>.</span></div>
+                    <p class="footer-desc">Votre destination incontournable pour une expérience culinaire exceptionnelle à Andoharanofotsy, Madagascar.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Liens rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html">Accueil</a></li>
+                        <li><a href="A-propos.html">À propos</a></li>
+                        <li><a href="Menu.html">Menu</a></li>
+                        <li><a href="reservation.html">Réservation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li>Andoharanofotsy, Madagascar</li>
+                        <li>+261 34 12 345 67</li>
+                        <li>contact@hotelintsika.mg</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Horaire</h4>
+                    <ul class="footer-links">
+                        <li>Lundi - Samedi: 7h - 22h</li>
+                        <li>Dimanche: 8h - 21h</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hotelintsika. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

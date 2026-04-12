@@ -1,0 +1,24 @@
+{
+  "name": "exercice_hotelerie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsiorydesigner/Exercice_javascript_hotelerie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tsiorydesigner/Exercice_javascript_hotelerie/issues"
+  },
+  "homepage": "https://github.com/tsiorydesigner/Exercice_javascript_hotelerie#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
