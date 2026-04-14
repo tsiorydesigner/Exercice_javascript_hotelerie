@@ -1,5 +1,9 @@
 // Redirection automatique vers HTTPS (SSL)
-if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && !window.location.hostname.includes('127.0.0.1')) {
+const isLocalhost = window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1' || 
+                    window.location.hostname.startsWith('192.168.');
+
+if (window.location.protocol === 'http:' && !isLocalhost) {
     window.location.href = window.location.href.replace('http:', 'https:');
 }
 
