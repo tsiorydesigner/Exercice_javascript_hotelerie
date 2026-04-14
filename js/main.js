@@ -452,14 +452,12 @@ const dessertItems = [
     { name: 'Mousse au Chocolat noir', price: 12000, id: 'mousse-chocolat' },
     { name: 'Crème Brûlée Vanille', price: 14000, id: 'creme-brulee' },
     { name: 'Tarte au Citron Meringuée', price: 13000, id: 'tarte-citron' },
-    { name: 'Salade de Fruits frais', price: 10000, id: 'salade-fruits' }
+    { name: 'Salade de Fruits frais', price: 10000, id: 'salade-fruits' },
+    { name: 'Cheesecake aux Fruits rouges', price: 16000, id: 'cheesecake' },
 ];
 
 // Données des boissons - Les IDs correspondent aux noms des fichiers dans /image/boisson/
-const boissonItems = [
-    { name: 'Jus de Fruits Naturel', price: 8000, id: 'jus-fruits-naturel' },
-    { name: 'Coca-Cola', price: 5000, id: 'coca-cola' }
-];
+const boissonItems = [];
 
 /**
  * Initialise la section des desserts dans la page menu.
