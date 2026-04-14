@@ -49,4 +49,3 @@ Le projet **Hotelintsika** est une interface web vitrine pour un établissement 
 
 --------
 
-ajouter les photo dans le dossier boisson dans la section boisson , on mettent les titre respectif en se référence au titre du photo
