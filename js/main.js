@@ -91,6 +91,16 @@ function updateCartUI() {
     totalDisplay.textContent = `${total.toLocaleString()} Ar`;
 }
 
+function updateQuantity(index, delta) {
+    cart[index].quantity += delta;
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartUI();
+}
+
 function removeFromCart(index) {
     cart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -293,3 +303,316 @@ function loadDessertMenu() {
 
 updateCartCount();
 loadDessertMenu();
+
+// ==================== CHATBOT ====================
+// Enhanced bot responses with suggestions and special actions using regex for intent recognition
+const botIntents = [
+    {
+        patterns: [/(bonjour|salut|hello|coucou)/i],
+        response: {
+            text: "Bonjour! Bienvenue chez Hotelintsika. Comment puis-je vous aider?",
+            suggestions: [
+                { label: "Voir le menu", value: "menu" },
+                { label: "Réserver une table", value: "réservation" },
+                { label: "Nos horaires", value: "horaire" },
+                { label: "Nous contacter", value: "contact" }
+            ]
+        }
+    },
+    {
+        patterns: [/(bonsoir|bonne soirée)/i],
+        response: {
+            text: "Bonsoir! Bienvenue chez Hotelintsika. Comment puis-je vous aider?",
+            suggestions: [
+                { label: "Voir le menu", value: "menu" },
+                { label: "Réserver une table", value: "réservation" }
+            ]
+        }
+    },
+    {
+        patterns: [/(dessert|sucré|gâteau|crêpe|brownie|cheesecake)/i],
+        response: {
+            text: "Nos délicieux desserts incluent le Fondant au Chocolat, la Crème Brûlée Vanille, et le Cheesecake aux Fruits rouges. Vous pouvez les commander directement depuis le menu.",
+            suggestions: [
+                { label: "Voir le menu", value: "menu" }
+            ]
+        }
+    },
+    {
+        patterns: [/(boisson|boire|rafraîchissement|bière|jus|cocktail)/i],
+        response: {
+            text: "Nous avons une sélection de boissons rafraîchissantes. Consultez notre menu pour plus de détails.",
+            suggestions: [
+                { label: "Voir le menu", value: "menu" }
+            ]
+        }
+    },
+    {
+        patterns: [/(menu|carte|plats|quoi manger)/i],
+        response: {
+            text: "Découvrez notre menu ici: <a href='menu.html' target='_blank'>Menu.html</a>. Nous proposons des plats traditionnels malgaches et des créations du chef.",
+            suggestions: [
+                { label: "Voir les desserts", value: "desserts" },
+                { label: "Voir les boissons", value: "boissons" }
+            ]
+        }
+    },
+    {
+        patterns: [/(réservation|réserver|table|chambre|disponibilité)/i],
+        response: {
+            text: "Pour réserver une table ou une chambre, vous pouvez utiliser notre formulaire de réservation ou nous appeler directement.",
+            suggestions: [
+                { label: "Faire une réservation", value: "ACTION_OPEN_RESERVATION_FORM" },
+                { label: "Appeler l'hôtel", value: "ACTION_CALL_HOTEL" }
+            ]
+        }
+    },
+    {
+        patterns: [/(horaire|ouverture|fermeture|quand ouvrez-vous|quand fermez-vous)/i],
+        response: {
+            text: "Nos horaires:<br>• Lundi - Samedi: 7h - 22h<br>• Dimanche: 8h - 21h<br>• Service 24/7 pour l'hébergement",
+            suggestions: [
+                { label: "Nous contacter", value: "contact" }
+            ]
+        }
+    },
+    {
+        patterns: [/(adresse|où êtes-vous|localisation|plan)/i],
+        response: {
+            text: "Nous sommes situés à Andoharanofotsy, Madagascar. Vous pouvez nous trouver sur Google Maps.",
+            suggestions: [
+                { label: "Voir sur la carte", value: "ACTION_OPEN_MAP" }
+            ]
+        }
+    },
+    {
+        patterns: [/(contact|appeler|téléphone|email|mail|nous joindre)/i],
+        response: {
+            text: "Contactez-nous:<br>• Téléphone: +261 34 12 345 67<br>• Email: contact@hotelintsika.mg<br>• Adresse: Andoharanofotsy, Madagascar",
+            suggestions: [
+                { label: "Appeler l'hôtel", value: "ACTION_CALL_HOTEL" },
+                { label: "Envoyer un email", value: "ACTION_SEND_EMAIL" }
+            ]
+        }
+    },
+    {
+        patterns: [/(prix|coût|combien coûte|tarif)/i],
+        response: {
+            text: "Nos plats varient entre 8 000 et 25 000 Ar. Le menu complet est disponible sur la page Menu.",
+            suggestions: [
+                { label: "Voir le menu", value: "menu" }
+            ]
+        }
+    },
+    {
+        patterns: [/(spécialité|plat du chef|recommandation|meilleur plat)/i],
+        response: {
+            text: "Nos spécialités incluent le Ravitoto sy Henakisoa, Henomby Ritra, Poulet Frite et Côtelettes de Porc.",
+            suggestions: [
+                { label: "Voir le menu", value: "menu" }
+            ]
+        }
+    },
+    { // Default fallback response - should be last
+        patterns: [/.*/i], // Matches any input if no specific intent is found
+        response: {
+            text: "Désolé, je n'ai pas bien compris. Pour une réponse plus précise, vous pouvez nous contacter directement.",
+            suggestions: [
+                { label: "Nous contacter", value: "contact" },
+                { label: "Voir le menu", value: "menu" }
+            ]
+        }
+    }
+];
+
+function toggleChat() {
+    const container = document.getElementById('chatContainer');
+    const toggle = document.getElementById('chatToggle');
+    container.classList.toggle('active');
+    toggle.classList.toggle('active');
+    // Initial bot message when chat opens for the first time
+    if (container.classList.contains('active') && document.getElementById('chatMessages').children.length === 0) {
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            addBotMessage(getBotResponse('bonjour')); 
+        }, 800);
+    }
+}
+
+function handleChatKeypress(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    addUserMessage(message);
+    input.value = '';
+
+    showTypingIndicator();
+
+    setTimeout(() => {
+        removeTypingIndicator();
+        const response = getBotResponse(message); // Now returns an object
+        addBotMessage(response);
+    }, 1000);
+}
+
+function sendQuickMessage(value) { // Renamed 'message' to 'value' for clarity
+    if (value.startsWith('ACTION_')) {
+        handleSpecialBotAction(value);
+        return;
+    }
+
+    // If it's not a special action, treat it as if the user typed it.
+    addUserMessage(value);
+    showTypingIndicator();
+
+    setTimeout(() => {
+        removeTypingIndicator();
+        const response = getBotResponse(value);
+        addBotMessage(response);
+    }, 1000);
+}
+
+function addUserMessage(message) {
+    const messages = document.getElementById('chatMessages');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-message user animate-in';
+    msgDiv.innerHTML = `
+        <div class="chat-message-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+        <div class="chat-message-content">${escapeHtml(message)}</div> <!-- User input always escaped -->
+    `;
+    messages.appendChild(msgDiv);
+    messages.scrollTo({
+        top: messages.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+function addBotMessage(response) { // response can be string or object
+    const messages = document.getElementById('chatMessages');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-message bot animate-in';
+
+    const avatarDiv = document.createElement('div');
+    avatarDiv.className = 'chat-message-avatar';
+    avatarDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>`;
+    msgDiv.appendChild(avatarDiv);
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'chat-message-content';
+
+    let suggestionsDiv = null;
+
+    if (typeof response === 'string') {
+        contentDiv.textContent = response; // Use textContent for plain strings
+    } else {
+        contentDiv.innerHTML = response.text; // Use innerHTML for bot's pre-defined HTML
+        if (response.suggestions && response.suggestions.length > 0) {
+            suggestionsDiv = document.createElement('div');
+            suggestionsDiv.className = 'chat-suggestions';
+            response.suggestions.forEach(sug => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-suggestion-btn';
+                btn.textContent = sug.label; // Label is plain text
+                btn.onclick = () => sendQuickMessage(sug.value); // Value is also plain text/command
+                suggestionsDiv.appendChild(btn);
+            });
+        }
+    }
+    msgDiv.appendChild(contentDiv);
+    if (suggestionsDiv) {
+        msgDiv.appendChild(suggestionsDiv);
+    }
+
+    messages.appendChild(msgDiv);
+    messages.scrollTo({
+        top: messages.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+function getBotResponse(message) {
+    const lower = message.toLowerCase();
+    for (const intent of botIntents) {
+        for (const pattern of intent.patterns) {
+            if (pattern.test(lower)) {
+                return intent.response;
+            }
+        }
+    }
+    // Fallback to the last intent (which should be the default one) if no specific pattern matches
+    return botIntents[botIntents.length - 1].response;
+}
+
+function handleSpecialBotAction(action) {
+    switch (action) {
+        case 'ACTION_OPEN_RESERVATION_FORM':
+            addBotMessage({ text: "Ouverture du formulaire de réservation..." });
+            const reservationSection = document.getElementById('reservation-section');
+            if (reservationSection) {
+                reservationSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.location.href = 'index.html#reservation';
+            }
+            break;
+        case 'ACTION_CALL_HOTEL':
+            addBotMessage({ text: "Vous pouvez nous appeler au <a href='tel:+261341234567'>+261 34 12 345 67</a>." });
+            window.open('tel:+261341234567');
+            break;
+        case 'ACTION_SEND_EMAIL':
+            addBotMessage({ text: "Envoyez-nous un email à <a href='mailto:contact@hotelintsika.mg'>contact@hotelintsika.mg</a>." });
+            window.open('mailto:contact@hotelintsika.mg');
+            break;
+        case 'ACTION_OPEN_MAP':
+            addBotMessage({ text: "Voici notre emplacement sur Google Maps." });
+            window.open('https://www.google.com/maps/search/?api=1&query=Hotelintsika+Andoharanofotsy+Madagascar', '_blank');
+            break;
+        default:
+            addBotMessage({ text: "Action non reconnue." });
+            break;
+    }
+}
+
+function showTypingIndicator() {
+    const messages = document.getElementById('chatMessages');
+    const indicatorDiv = document.createElement('div');
+    indicatorDiv.id = 'typingIndicator';
+    indicatorDiv.className = 'chat-message bot animate-in';
+    indicatorDiv.innerHTML = `
+        <div class="chat-message-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 0 0 1 2-2h14a2 0 0 1 2 2z"></path>
+            </svg>
+        </div>
+        <div class="chat-message-content typing-dots">
+            <span></span><span></span><span></span>
+        </div>
+    `;
+    messages.appendChild(indicatorDiv);
+    messages.scrollTo({ top: messages.scrollHeight, behavior: 'smooth' });
+}
+
+function removeTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) indicator.remove();
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
