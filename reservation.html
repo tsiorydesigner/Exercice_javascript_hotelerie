@@ -7,6 +7,13 @@
     <title>Réservation - Hotelintsika</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            // Remplacez par votre clé publique EmailJS (Account > API Keys)
+            emailjs.init("_eR4M0XbmdWkHb0L8");
+        })();
+    </script>
 </head>
 <body>
 
@@ -60,32 +67,32 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
                         <div class="form-group">
                             <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; color: var(--secondary);">Nom complet</label>
-                            <input type="text" placeholder="Ex: Jean Rakoto" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
+                            <input type="text" name="nom" placeholder="Ex: Jean Rakoto" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
                         </div>
                         <div class="form-group">
                             <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; color: var(--secondary);">Numéro de téléphone</label>
-                            <input type="tel" placeholder="034 12 345 67" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
+                            <input type="tel" name="telephone" placeholder="034 12 345 67" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
                         </div>
                     </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
                         <div class="form-group">
                             <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; color: var(--secondary);">Date</label>
-                            <input type="date" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
+                            <input type="date" name="date" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
                         </div>
                         <div class="form-group">
                             <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; color: var(--secondary);">Heure</label>
-                            <input type="time" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
+                            <input type="time" name="heure" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
                         </div>
                         <div class="form-group">
                             <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; color: var(--secondary);">Nombre de personnes</label>
-                            <input type="number" min="1" max="20" value="2" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
+                            <input type="number" name="personnes" min="1" max="20" value="2" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;">
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-bottom: 2rem;">
                         <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; color: var(--secondary);">Sélectionner une Table</label>
-                        <select required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem; background-color: #fff; cursor: pointer;">
+                        <select name="table" required style="width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem; background-color: #fff; cursor: pointer;">
                             <option value="" disabled selected>Choisir le numéro et le nom de la table</option>
                             <option value="T01-BAOBAB">Table 01 - Baobab</option>
                             <option value="T02-RAVINALA">Table 02 - Ravinala</option>
@@ -135,6 +142,7 @@
                 </div>
                 <div class="chat-header-info">
                     <h3>Assistant Hotelintsika</h3>
+                   
                     <p>En ligne • Répond rapidement</p>
                 </div>
                 <button class="chat-minimize" onclick="toggleChat()">

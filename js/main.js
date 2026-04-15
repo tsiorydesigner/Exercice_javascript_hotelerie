@@ -225,8 +225,47 @@ function submitContact(event) {
 
 function submitReservation(event) {
     event.preventDefault();
-    alert('Votre demande de réservation a été envoyée !');
-    event.target.reset();
+    
+    const form = event.target;
+    const btn = form.querySelector('.btn-primary');
+    const originalText = btn.textContent;
+    btn.textContent = 'Envoi en cours...';
+    btn.disabled = true;
+
+    const formData = {
+        nom: form.nom.value,
+        telephone: form.telephone.value,
+        date: form.date.value,
+        heure: form.heure.value,
+        personnes: form.personnes.value,
+        table: form.table.value,
+        paiement: form.payment_method.value || 'Non sélectionné'
+    };
+
+    const templateParams = {
+        from_name: formData.nom,
+        phone: formData.telephone,
+        date: formData.date,
+        time: formData.heure,
+        guests: formData.personnes,
+        table: formData.table,
+        payment: formData.paiement,
+        to_email: 'hotelintsika@gmail.com'
+    };
+
+    emailjs.send('service_7u4ygxd', 'template_h48k8v6', templateParams)
+        .then(() => {
+            alert('Votre réservation a été envoyée ! Nous vous confirmerons par email.');
+            form.reset();
+        })
+        .catch((error) => {
+            console.error('Erreur EmailJS:', error);
+            alert('Erreur: ' + (error.text || 'Échec de l\'envoi. Vérifiez votre clé publique et vos IDs de service/template.'));
+        })
+        .finally(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        });
 }
 
 // ==================== INITIALISATION GLOBALE ====================
